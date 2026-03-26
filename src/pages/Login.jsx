@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { AuthContext, useData } from "../contexts/AuthContext";
+import { AuthContext, useAuth } from "../contexts/AuthContext";
 
 import { LoginContainer, LoginForm, PaginaContainer } from "../styles/styles";
 
@@ -11,7 +11,7 @@ export function Login() {
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
 
-  const { login, logado } = useData(AuthContext);
+  const { login, logado } = useAuth(AuthContext);
 
   if (logado) {
     navigate("/painel");

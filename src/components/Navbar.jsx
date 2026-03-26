@@ -1,12 +1,12 @@
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import { useEffect } from "react";
+import { AuthContext, useAuth } from "../contexts/AuthContext";
 
 import { NavbarContainer } from "../styles/styles";
-import { useData } from "../contexts/DataContext";
+import { useData, DataContext } from "../contexts/DataContext";
 
 export function Navbar() {
-  const { logout, usuario, logado } = useContext(AuthContext);
-  const { quantidadeCarrinho } = useData();
+  const { logout, usuario, logado } = useAuth(AuthContext);
+  const { quantidadeCarrinho } = useData(DataContext);
 
   useEffect(() => {
     if (quantidadeCarrinho > 0) {
