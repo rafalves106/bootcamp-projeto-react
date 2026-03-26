@@ -1,8 +1,8 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { AuthContext } from "../contexts/AuthContext";
+import { AuthContext, useData } from "../contexts/AuthContext";
 
 import { LoginContainer, LoginForm, PaginaContainer } from "../styles/styles";
 
@@ -11,7 +11,11 @@ export function Login() {
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
 
-  const { login } = useContext(AuthContext);
+  const { login, logado } = useData(AuthContext);
+
+  if (logado) {
+    navigate("/painel");
+  }
 
   const fazerLogin = (evento) => {
     evento.preventDefault();

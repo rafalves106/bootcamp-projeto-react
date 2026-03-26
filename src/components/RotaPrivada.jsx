@@ -1,10 +1,8 @@
-import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthContext";
+import { AuthContext, useData } from "../contexts/AuthContext";
 
 export const RotaPrivada = ({ children }) => {
-  const { logado } = useContext(AuthContext);
-
+  const { logado } = useData(AuthContext);
   if (!logado) {
     return <Navigate to="/login" />;
   }
