@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +16,10 @@ export function Login() {
   if (logado) {
     navigate("/painel");
   }
+
+  useEffect(() => {
+    document.title = "Unfiltered - Login";
+  }, []);
 
   const fazerLogin = (evento) => {
     evento.preventDefault();

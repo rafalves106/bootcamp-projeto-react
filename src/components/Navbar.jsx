@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+
 import { AuthContext, useAuth } from "../contexts/AuthContext";
 
 import { NavbarContainer } from "../styles/styles";
@@ -9,10 +10,10 @@ export function Navbar() {
   const { quantidadeCarrinho } = useData(DataContext);
 
   useEffect(() => {
-    if (quantidadeCarrinho > 0) {
+    if (usuario && logado && quantidadeCarrinho > 0) {
       document.title = `Unfiltered - Carrinho (${quantidadeCarrinho})`;
     }
-  }, [quantidadeCarrinho]);
+  }, [usuario, logado, quantidadeCarrinho]);
 
   return (
     <NavbarContainer>
