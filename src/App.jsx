@@ -15,7 +15,7 @@ function App() {
       <GlobalStyles />
       <AppProviders>
         <BrowserRouter>
-          <Navbar usuario="John Doe" />
+          <Navbar />
           <Routes>
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<Login />} />
