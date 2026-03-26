@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 export const RotaPrivada = ({ children }) => {
-  const tokenExistente = localStorage.getItem("token");
+  const { logado } = useContext(AuthContext);
 
-  if (!tokenExistente) {
+  if (!logado) {
     return <Navigate to="/login" />;
   }
 

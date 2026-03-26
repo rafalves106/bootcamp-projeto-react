@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-
-import { AuthProvider } from "./auth/AuthProvider";
-import { AuthContext } from "./contexts/AuthContext";
 
 import { GlobalStyles } from "./styles/styles";
 
@@ -11,27 +7,15 @@ import { Painel } from "./pages/Painel";
 
 import { Navbar } from "./components/Navbar";
 import { RotaPrivada } from "./components/RotaPrivada";
+import { AppProviders } from "./providers/AppProviders";
 
 function App() {
-  const [quantidadeCarrinho, setQuantidadeCarrinho] = useState(0);
-
-  const adicionarAoCarrinho = () => {
-    setQuantidadeCarrinho(quantidadeCarrinho + 1);
-  };
-
-  useEffect(() => {
-    if (quantidadeCarrinho > 0) {
-      document.title = `Unfiltered - Carrinho (${quantidadeCarrinho})`;
-    }
-  }, [quantidadeCarrinho]);
-
   return (
     <>
       <GlobalStyles />
-
-      <AuthProvider>
+      <AppProviders>
         <BrowserRouter>
-          <Navbar usuario="John Doe" carrinho={quantidadeCarrinho} />
+          <Navbar usuario="John Doe" />
           <Routes>
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<Login />} />
@@ -39,13 +23,13 @@ function App() {
               path="/painel"
               element={
                 <RotaPrivada>
-                  <Painel adicionarAoCarrinho={adicionarAoCarrinho} />
+                  <Painel />
                 </RotaPrivada>
               }
             />
           </Routes>
         </BrowserRouter>
-      </AuthProvider>
+      </AppProviders>
     </>
   );
 }

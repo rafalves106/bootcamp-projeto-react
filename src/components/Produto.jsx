@@ -5,7 +5,7 @@ export function Produto({ nome, descricao, preco, adicionarAoCarrinho }) {
     <ProdutoContainer>
       <h2>{nome}</h2>
       <p>{descricao}</p>
-      <p>Preço: R$ {preco.toFixed(2)}</p>
+      <p>${preco.toFixed(2)}</p>
       <button onClick={adicionarAoCarrinho}>Adicionar ao carrinho</button>
     </ProdutoContainer>
   );
